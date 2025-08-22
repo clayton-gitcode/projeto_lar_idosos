@@ -7,6 +7,8 @@
         <li>{{ $paciente->name }} {{ $paciente->last_name }}</li>
         <br>
         <ol>Nascimento: {{ $paciente->birth_date }}</ol>
+        
+        <a href="{{ route('pacientes.edit', $paciente) }}">editar</a>
         <hr>          
         @endforeach
     </ul>

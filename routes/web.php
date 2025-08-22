@@ -17,3 +17,7 @@ Route::get('/pacientes/create', [PacienteController::class, 'create'])->name('pa
 Route::post('/pacientes/create', [PacienteController::class, 'store']);
 
 Route::get('/pacientes/list', [PacienteController::class, 'show'])->name('pacientes.list');
+
+Route::get('/pacientes/{paciente}/edit', [PacienteController::class, 'edit'])->name('pacientes.edit');
+
+Route::put('/pacientes/{paciente}/edit', [PacienteController::class, 'update']);

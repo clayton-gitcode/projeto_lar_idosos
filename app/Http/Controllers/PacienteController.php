@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PacienteRegisterRequest;
+use App\Http\Requests\UpdatePacienteRequest;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 
@@ -51,15 +52,17 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
-        //
+        return view('pacientes.edit', compact('paciente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Paciente $paciente)
+    public function update(UpdatePacienteRequest $request, Paciente $paciente)
     {
-        //
+        $paciente->fill($request->validated())->save();
+
+        return to_route('dashboard')->with(['message'=>'Paciente atualizado!']);
     }
 
     /**

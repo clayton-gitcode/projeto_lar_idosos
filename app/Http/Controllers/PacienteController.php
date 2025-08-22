@@ -70,6 +70,8 @@ class PacienteController extends Controller
      */
     public function destroy(Paciente $paciente)
     {
-        //
+        $paciente->delete();
+        
+        return to_route('dashboard')->with('message','Deletado com sucesso!');
     }
 }

@@ -21,3 +21,5 @@ Route::get('/pacientes/list', [PacienteController::class, 'show'])->name('pacien
 Route::get('/pacientes/{paciente}/edit', [PacienteController::class, 'edit'])->name('pacientes.edit');
 
 Route::put('/pacientes/{paciente}/edit', [PacienteController::class, 'update']);
+
+Route::delete('/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');

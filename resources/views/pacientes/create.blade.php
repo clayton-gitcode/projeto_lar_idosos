@@ -1,6 +1,6 @@
 <div>
     <h1>Cadastrar Paciente</h1>
-
+    <a href="{{ route('dashboard') }}"><< voltar</a>
     @if($message = session()->get('message'))
     <div>{{ $message }}</div>        
     @endif

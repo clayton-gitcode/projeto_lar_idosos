@@ -9,7 +9,14 @@
         <ol>Nascimento: {{ $paciente->birth_date }}</ol>
         
         <a href="{{ route('pacientes.edit', $paciente) }}">editar</a>
-        <hr>          
+
+        <form action="{{ route('pacientes.destroy', $paciente) }}" method="post"
+            onsubmit="return confirm('Tem certeza ?')">
+            @csrf
+            @method('DELETE')
+            <button>deletar 🗑️</button>
+        </form>
+        <hr>
         @endforeach
     </ul>
 </div>

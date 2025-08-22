@@ -38,9 +38,12 @@ class PacienteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Paciente $paciente)
+    public function show()
     {
-        
+        $pacientes = Paciente::all();
+        return view('pacientes.list', [
+            'pacientes' => $pacientes
+        ]);
     }
 
     /**

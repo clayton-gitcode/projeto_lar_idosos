@@ -6,6 +6,6 @@
 
     <ul>
         <li><a href="{{ route('pacientes.create') }}">Cadastrar pacientes</a></li>
-        <li><a href="">Listar pacientes</a></li>
+        <li><a href="{{ route('pacientes.list') }}">Listar pacientes</a></li>
     </ul>
 </div>

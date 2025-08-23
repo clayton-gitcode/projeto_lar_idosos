@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,14 +13,27 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/pacientes/create', [PacienteController::class, 'create'])->name('pacientes.create');
+Route::middleware('guest')->group(function () {
 
-Route::post('/pacientes/create', [PacienteController::class, 'store']);
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+});
 
-Route::get('/pacientes/list', [PacienteController::class, 'show'])->name('pacientes.list');
+Route::middleware('auth')->group(function () {
 
-Route::get('/pacientes/{paciente}/edit', [PacienteController::class, 'edit'])->name('pacientes.edit');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::put('/pacientes/{paciente}/edit', [PacienteController::class, 'update']);
+    Route::get('/pacientes/create', [PacienteController::class, 'create'])->name('pacientes.create');
 
-Route::delete('/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');
+    Route::post('/pacientes/create', [PacienteController::class, 'store']);
+
+    Route::get('/pacientes/list', [PacienteController::class, 'show'])->name('pacientes.list');
+
+    Route::get('/pacientes/{paciente}/edit', [PacienteController::class, 'edit'])->name('pacientes.edit');
+
+    Route::put('/pacientes/{paciente}/edit', [PacienteController::class, 'update']);
+
+    Route::delete('/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');
+});

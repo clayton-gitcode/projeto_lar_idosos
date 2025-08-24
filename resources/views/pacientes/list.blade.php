@@ -4,9 +4,13 @@
     <a href="{{ route('dashboard') }}"> << Voltar</a>
     <ul>
         @foreach ($pacientes as $paciente)
-        <li>{{ $paciente->name }} {{ $paciente->last_name }}</li>
+        <li>{{ $paciente->name }}</li>
         <br>
         <ol>Nascimento: {{ $paciente->birth_date }}</ol>
+        <ol>CPF: {{ $paciente->cpf }}</ol>
+        <ol>SUS: {{ $paciente->sus }}</ol>
+        <ol>Responsavel: {{ $paciente->responsavel }}</ol>
+        <ol>Telefone resp: {{ $paciente->telefone_resp }}</ol>
         
         <a href="{{ route('pacientes.edit', $paciente) }}">editar</a>
 

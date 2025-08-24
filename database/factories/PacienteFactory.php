@@ -17,7 +17,19 @@ class PacienteFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'birth_date' => fake()->date(),
+            'rg' => fake()->word(),
+            'cpf' => fake()->numberBetween(10000,99999),
+            'sus' => fake()->numberBetween(100000000000000, 999999999999999),
+            'responsavel' => fake()->name(),
+            'doc_resp' => fake()->numberBetween(1000, 9999),
+            'telefone_resp' => fake()->phoneNumber(false),
+            'bairro' => fake()->city(),
+            'tipo_beneficio' => fake()->randomElement(['Auxílio Moradia', 'Bolsa Família', 'Cesta Básica', 'Outros']),
+            'valor_mensal' => fake()->randomFloat(2, 50, 2000),
+            'data_reg_ps' => fake()->date(),
+            'obs' => fake()->sentence(),
         ];
     }
 }

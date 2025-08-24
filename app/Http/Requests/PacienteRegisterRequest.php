@@ -22,9 +22,19 @@ class PacienteRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>['required','min:3'],
-            'last_name'=>['required','min:3'],
-            'birth_date'=>['required','date'],
+            'nome' => ['required', 'string', 'max:255'],
+            'birth_date' => ['nullable', 'date'],
+            'rg' => ['nullable', 'string', 'max:20'],
+            'cpf' => ['required', 'string', 'max:14', 'unique:pacientes,cpf'],
+            'sus' => ['nullable', 'string', 'max:15'],
+            'responsavel' => ['nullable', 'string', 'max:255'],
+            'doc_resp' => ['nullable', 'string', 'max:20'],
+            'telefone_resp' => ['nullable', 'string', 'max:20'],
+            'bairro' => ['nullable', 'string', 'max:100'],
+            'tipo_beneficio' => ['nullable', 'string', 'max:50'],
+            'valor_mensal' => ['nullable', 'numeric', 'min:0'],
+            'data_reg_ps' => ['nullable', 'date'],
+            'obs' => ['nullable', 'string'],
         ];
     }
 }

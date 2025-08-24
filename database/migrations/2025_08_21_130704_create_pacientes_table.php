@@ -14,8 +14,18 @@ return new class extends Migration
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('last_name');
-            $table->date('birth_date');
+            $table->date('birth_date')->nullable();
+            $table->string('rg')->nullable();
+            $table->string('cpf')->nullable();
+            $table->string('sus')->nullable();
+            $table->string('responsavel')->nullable();
+            $table->string('doc_resp')->nullable();
+            $table->string('telefone_resp')->nullable();
+            $table->string('bairro')->nullable();
+            $table->string('tipo_beneficio')->nullable();
+            $table->decimal('valor_mensal', 10, 2)->nullable();
+            $table->date('data_reg_ps')->nullable();
+            $table->string('obs')->nullable();
             $table->timestamps();
         });
     }

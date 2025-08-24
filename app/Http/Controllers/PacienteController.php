@@ -41,7 +41,7 @@ class PacienteController extends Controller
      */
     public function show()
     {
-        $pacientes = Paciente::all();
+        $pacientes = Paciente::orderBy('name','asc')->get();
         return view('pacientes.list', [
             'pacientes' => $pacientes
         ]);

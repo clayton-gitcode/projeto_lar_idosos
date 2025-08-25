@@ -19,16 +19,18 @@ class PacienteFactory extends Factory
         return [
             'name' => fake()->name(),
             'birth_date' => fake()->date(),
+            'age'=>fake()->numberBetween(18, 80),
+            'sexo'=>fake()->randomElement(['M','F']),
             'rg' => fake()->word(),
             'cpf' => fake()->numberBetween(10000,99999),
             'sus' => fake()->numberBetween(100000000000000, 999999999999999),
             'responsavel' => fake()->name(),
             'doc_resp' => fake()->numberBetween(1000, 9999),
             'telefone_resp' => fake()->phoneNumber(false),
-            'bairro' => fake()->city(),
+            'banco' => fake()->randomElement(['Itaú','Bradesco','Santander','caixa']),
             'tipo_beneficio' => fake()->randomElement(['Auxílio Moradia', 'Bolsa Família', 'Cesta Básica', 'Outros']),
             'valor_mensal' => fake()->randomFloat(2, 50, 2000),
-            'data_reg_ps' => fake()->date(),
+            'data_recebimento' => fake()->date(),
             'obs' => fake()->sentence(),
         ];
     }

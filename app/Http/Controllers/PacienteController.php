@@ -74,4 +74,9 @@ class PacienteController extends Controller
         
         return to_route('dashboard')->with('message','Deletado com sucesso!');
     }
+
+    public function imprimir(Paciente $paciente){
+
+        return view('pacientes.imprimir', compact('paciente'));
+    }
 }

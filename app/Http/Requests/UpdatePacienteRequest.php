@@ -22,9 +22,19 @@ class UpdatePacienteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>['required','min:3'],
-            'last_name'=>['required','min:3'],
-            'birth_date'=>['required','date'],
+            'name' => ['required', 'string', 'max:255'],
+            'birth_date' => ['required', 'date'],
+            'rg' => ['nullable', 'string', 'max:20'],
+            'sexo'=>['required','in:M,F'],
+            'sus' => ['nullable', 'string', 'max:20'],
+            'responsavel' => ['nullable', 'string', 'max:50'],
+            'doc_resp' => ['nullable', 'string', 'max:20'],
+            'telefone_resp' => ['nullable', 'string', 'max:20'],
+            'banco' => ['nullable', 'string', 'max:20'],
+            'tipo_beneficio' => ['nullable', 'string', 'max:50'],
+            'valor_mensal' => ['nullable', 'numeric', 'min:0'],
+            'data_recebimento' => ['nullable', 'date'],
+            'obs' => ['nullable', 'string','max:255'],
         ];
     }
 }

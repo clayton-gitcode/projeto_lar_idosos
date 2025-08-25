@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/pacientes/create', [PacienteController::class, 'store']);
 
     Route::get('/pacientes/list', [PacienteController::class, 'show'])->name('pacientes.list');
+    Route::get('/pacientes/{paciente}/imprimir', [PacienteController::class, 'imprimir'])->name('pacientes.imprimir');
 
     Route::get('/pacientes/{paciente}/edit', [PacienteController::class, 'edit'])->name('pacientes.edit');
 

@@ -38,8 +38,12 @@
         <br>
         <div>
             <label for="sexo">Sexo:</label>
-            M<input type="radio" name="sexo" value="{{ old('sexo', $paciente->sexo) }}"/>
-            F<input type="radio" name="sexo" value="{{ old('sexo', $paciente->sexo) }}"/>
+            <label>
+                <input type="radio" name="sexo" value="M" {{ old('sexo', $paciente->sexo) == 'M' ? 'checked' : '' }}/> M
+            </label>
+            <label>
+                <input type="radio" name="sexo" value="F" {{ old('sexo', $paciente->sexo) == 'F' ? 'checked' : '' }}/> F
+            </label>
 
             @error('sexo')
                 <span>{{ $message }}</span>

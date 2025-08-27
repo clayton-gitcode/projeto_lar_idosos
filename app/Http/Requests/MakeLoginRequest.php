@@ -37,6 +37,15 @@ class MakeLoginRequest extends FormRequest
 
     public function tryToLogin(): bool
     {
+        /**
+         * Tenta autenticar um usuário com base no e-mail e senha fornecidos.
+         *
+         * Procura um usuário pelo e-mail informado. Se encontrado, verifica se a senha fornecida corresponde
+         * à senha armazenada no banco de dados utilizando hash seguro. Caso a autenticação seja bem-sucedida,
+         * realiza o login do usuário na aplicação.
+         *
+         * @return bool Retorna true se o login for bem-sucedido, caso contrário retorna false.
+         */
         if (
             $user = User::query()->where('email', '=', $this->email)
             ->first()

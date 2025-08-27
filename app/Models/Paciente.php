@@ -11,6 +11,31 @@ class Paciente extends Model
     /** @use HasFactory<\Database\Factories\PacienteFactory> */
     use HasFactory;
 
+     protected $fillable = [
+        'name',
+        'birth_date',
+        'age',
+        'sexo',
+        'rg',
+        'cpf',
+        'sus',
+        'responsavel',
+        'doc_resp',
+        'telefone_resp',
+        'banco',
+        'tipo_beneficio',
+        'valor_mensal',
+        'data_recebimento',
+        'obs',
+    ];
+
+    /**
+     * Acessor para o atributo birthDate.
+     *
+     * Este método formata a data de nascimento do paciente para o formato 'd/m/Y'.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
     protected function birthDate(): Attribute
     {
         return Attribute::make(

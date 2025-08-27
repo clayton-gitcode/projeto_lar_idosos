@@ -41,6 +41,12 @@ class PacienteController extends Controller
      */
     public function show()
     {
+        /**
+         * Recupera todos os pacientes do banco de dados, ordenados pelo nome em ordem crescente,
+         * e retorna a view 'pacientes.list' com a lista de pacientes.
+         *
+         * @return \Illuminate\View\View Retorna a view com os pacientes listados.
+         */
         $pacientes = Paciente::orderBy('name','asc')->get();
         return view('pacientes.list', [
             'pacientes' => $pacientes
@@ -60,6 +66,14 @@ class PacienteController extends Controller
      */
     public function update(UpdatePacienteRequest $request, Paciente $paciente)
     {
+        /**
+         * Atualiza os dados do paciente com as informações validadas da requisição.
+         * 
+         * Após a atualização, redireciona para a rota 'dashboard' exibindo uma mensagem de sucesso.
+         *
+         * @param \Illuminate\Http\Request $request Requisição contendo os dados validados do paciente.
+         * @return \Illuminate\Http\RedirectResponse Redireciona para o dashboard com mensagem de confirmação.
+         */
         $paciente->fill($request->validated())->save();
 
         return to_route('dashboard')->with(['message'=>'Paciente atualizado!']);

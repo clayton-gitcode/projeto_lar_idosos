@@ -145,6 +145,7 @@
             @enderror
         </div>
         <br>
-        <button>Salvar</button>
+        <a href="{{ route('dashboard') }}"> << cancelar</a>
+        <button>Salvar</button>        
     </form>
 </div>

@@ -1,4 +1,4 @@
-# Projeto Asilo
+# Projeto Lar dos Idosos
 
 Este projeto tem como objetivo gerenciar informações e processos relacionados a um lar de idosos, facilitando o acompanhamento de residentes, funcionários, atividades e recursos.
 

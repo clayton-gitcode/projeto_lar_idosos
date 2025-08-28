@@ -3,6 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
+/**
+ * @property-read UploadedFile $photo
+ */
 
 class UpdatePacienteRequest extends FormRequest
 {
@@ -35,6 +39,7 @@ class UpdatePacienteRequest extends FormRequest
             'valor_mensal' => ['nullable', 'numeric', 'min:0'],
             'data_recebimento' => ['nullable', 'date'],
             'obs' => ['nullable', 'string','max:255'],
+            'photo'=>['nullable', 'image'],
         ];
     }
 }

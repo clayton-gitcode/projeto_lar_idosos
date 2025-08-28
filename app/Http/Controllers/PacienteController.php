@@ -6,6 +6,7 @@ use App\Http\Requests\PacienteRegisterRequest;
 use App\Http\Requests\UpdatePacienteRequest;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class PacienteController extends Controller
 {
@@ -66,16 +67,19 @@ class PacienteController extends Controller
      */
     public function update(UpdatePacienteRequest $request, Paciente $paciente)
     {
-        /**
-         * Atualiza os dados do paciente com as informações validadas da requisição.
-         * 
-         * Após a atualização, redireciona para a rota 'dashboard' exibindo uma mensagem de sucesso.
-         *
-         * @param \Illuminate\Http\Request $request Requisição contendo os dados validados do paciente.
-         * @return \Illuminate\Http\RedirectResponse Redireciona para o dashboard com mensagem de confirmação.
-         */
-        $paciente->fill($request->validated())->save();
+        
+        // Valida os dados recebidos da requisição
+        $data = $request->validated();
 
+        // Se uma foto foi enviada, armazena o arquivo e salva o caminho em 'photo'
+        if($file = $request->photo){
+            $data['photo'] = $file->store('photos','public');
+        }
+        
+        // Atualiza o modelo Paciente com os dados validados e salva no banco de dados
+        $paciente->fill($data)->save();
+
+        // Redireciona para o dashboard com uma mensagem de sucesso
         return to_route('dashboard')->with(['message'=>'Paciente atualizado!']);
     }
 

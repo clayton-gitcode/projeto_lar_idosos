@@ -5,10 +5,14 @@
     <div>{{ $message }}</div>
     @endif
 
-    <form action="{{ route('pacientes.edit', $paciente ) }}" method="POST">
+    <form action="{{ route('pacientes.edit', $paciente ) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')
 
+        <div>
+            <label for="photo">Foto</label>
+            <input type="file" name="photo"/>
+        </div>
         <div>
             <label for="name">Nome completo:</label>
             <input type="text" name="name" placeholder="Nome completo" value="{{old('name', $paciente->name)}}"/>

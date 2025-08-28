@@ -27,6 +27,7 @@ class Paciente extends Model
         'valor_mensal',
         'data_recebimento',
         'obs',
+        'photo',
     ];
 
     /**

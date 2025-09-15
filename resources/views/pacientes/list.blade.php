@@ -6,6 +6,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Reg.</th>
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>Responsável</th>
@@ -16,6 +17,7 @@
                 <tbody>
                     @foreach ($pacientes as $paciente)
                     <tr>
+                        <td>{{ $paciente->id }}</td>
                         <td>{{ $paciente->name }}</td>
                         <td>{{ $paciente->cpf }}</td>
                         <td>{{ $paciente->responsavel }}</td>

@@ -6,6 +6,7 @@
     @endif
 
     <form action="{{ route('pacientes.edit', $paciente ) }}" method="POST" enctype="multipart/form-data">
+        {{-- enctype="multipart/form-data" permite o envio de arquivos pelo formulário (como imagens, PDFs, etc.) junto com outros dados. --}}
         @csrf
         @method('put')
 

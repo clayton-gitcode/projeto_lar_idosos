@@ -1,149 +1,152 @@
-<div>
-    <h1>Cadastrar Paciente</h1>
-    <a href="{{ route('dashboard') }}"><< voltar</a>
-    @if($message = session()->get('message'))
-    <div>{{ $message }}</div>        
-    @endif
-    
-    <form action="{{ route('pacientes.create') }}" method="POST">
-        @csrf
-
-        <div>
-            <label for="name">Nome completo:</label>
-            <input type="text" name="name" placeholder="Nome completo" value="{{old('name')}}"/>
-
-            @error('name')
-                <span>{{ $message }}</span>
-            @enderror
+<x-layout.app>
+    <div class="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+        {{-- Cabeçalho --}}
+        <div class="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-base-content">Cadastrar Novo Paciente</h1>
+                <p class="mt-1 text-base-content/70">Preencha os campos abaixo para adicionar um paciente.</p>
+            </div>
+            <a href="{{ route('dashboard') }}" class="btn btn-ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Voltar
+            </a>
         </div>
-        <br>
-        <div>
-            <label for="birth_date">Data de Nascimento:</label>
-            <input type="date" name="birth_date" value="{{old('birth_date')}}"/>
-
-            @error('birth_date')
-                <span>{{ $message }}</span>
-            @enderror
+        
+        {{-- Mensagem de Feedback --}}
+        @if($message = session()->get('message'))
+        <div role="alert" class="alert alert-success mb-6 shadow-md">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>{{ $message }}</span>
         </div>
-        <br>
-        <div>
-            <label for="age">Idade:</label>
-            <input type="number" name="age" placeholder="Idade" value="{{old('age')}}"/>
+        @endif
 
-            @error('age')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="sexo">Sexo:</label>
-            M<input type="radio" name="sexo" value="M" {{ old('sexo') == 'M' ? 'checked' : '' }}/>
-            F<input type="radio" name="sexo" value="F" {{ old('sexo') == 'F' ? 'checked' : '' }}/>
+        {{-- Card do Formulário --}}
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <form action="{{ route('pacientes.create') }}" method="POST">
+                    @csrf
 
-            @error('sexo')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="rg">RG:</label>
-            <input type="text" name="rg" placeholder="MG 00 000 00" value="{{old('rg')}}"/>
+                    {{-- Grid para organizar os campos --}}
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-            @error('rg')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="cpf">CPF:</label>
-            <input type="text" name="cpf" placeholder="000-000-000-00" value="{{old('cpf')}}"/>
+                        {{-- SEÇÃO: DADOS PESSOAIS --}}
+                        <div class="divider col-span-full text-lg font-semibold">Dados Pessoais</div>
 
-            @error('cpf')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="sus">SUS:</label>
-            <input type="text" name="sus" placeholder="000000000000" value="{{old('sus')}}"/>
+                        <div class="form-control lg:col-span-2">
+                            <label class="label"><span class="label-text">Nome Completo</span></label>
+                            <input type="text" name="name" placeholder="Nome completo do paciente" value="{{old('name')}}" class="input input-bordered w-full @error('name') input-error @enderror" />
+                            @error('name')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
 
-            @error('sus')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="responsavel">Responsável:</label>
-            <input type="text" name="responsavel" placeholder="Nome completo" value="{{old('responsavel')}}"/>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Data de Nascimento</span></label>
+                            <input type="date" name="birth_date" value="{{old('birth_date')}}" class="input input-bordered w-full @error('birth_date') input-error @enderror" />
+                            @error('birth_date')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
 
-            @error('responsavel')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="doc_resp">Doc. resp:</label>
-            <input type="text" name="doc_resp" placeholder="RG 000 000 00" value="{{old('doc_resp')}}"/>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Idade</span></label>
+                            <input type="number" name="age" placeholder="Idade" value="{{old('age')}}" class="input input-bordered w-full @error('age') input-error @enderror" />
+                            @error('age')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+                        
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Sexo</span></label>
+                            <div class="flex items-center gap-4">
+                                <label class="label cursor-pointer gap-2">
+                                    <input type="radio" name="sexo" value="M" class="radio radio-primary" {{ old('sexo') == 'M' ? 'checked' : '' }} />
+                                    <span class="label-text">Masculino</span> 
+                                </label>
+                                <label class="label cursor-pointer gap-2">
+                                    <input type="radio" name="sexo" value="F" class="radio radio-primary" {{ old('sexo') == 'F' ? 'checked' : '' }} />
+                                    <span class="label-text">Feminino</span> 
+                                </label>
+                            </div>
+                             @error('sexo')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
 
-            @error('doc_resp')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="telefone_resp">Telefone resp.:</label>
-            <input type="text" name="telefone_resp" placeholder="(00)000-0000" value="{{old('telefone_resp')}}"/>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">RG</span></label>
+                            <input type="text" name="rg" placeholder="MG 00.000.000" value="{{old('rg')}}" class="input input-bordered w-full @error('rg') input-error @enderror" />
+                             @error('rg')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+                        
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">CPF</span></label>
+                            <input type="text" name="cpf" placeholder="000.000.000-00" value="{{old('cpf')}}" class="input input-bordered w-full @error('cpf') input-error @enderror" />
+                            @error('cpf')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
 
-            @error('telefone_resp')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="banco">Banco:</label>
-            <input type="text" name="banco" placeholder="nome do banco" value="{{old('banco')}}"/>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Cartão do SUS</span></label>
+                            <input type="text" name="sus" placeholder="Nº do cartão do SUS" value="{{old('sus')}}" class="input input-bordered w-full @error('sus') input-error @enderror" />
+                            @error('sus')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
 
-            @error('banco')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="tipo_beneficio">Beneficio:</label>
-            <input type="text" name="tipo_beneficio" placeholder="beneficio" value="{{old('tipo_beneficio')}}"/>
+                        {{-- SEÇÃO: DADOS DO RESPONSÁVEL --}}
+                        <div class="divider col-span-full text-lg font-semibold">Dados do Responsável</div>
 
-            @error('tipo_beneficio')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="valor_mensal">Valor Mensal:</label>
-            <input type="text" name="valor_mensal" placeholder="R$ 000,00" value="{{old('valor_mensal')}}"/>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Nome do Responsável</span></label>
+                            <input type="text" name="responsavel" placeholder="Nome completo" value="{{old('responsavel')}}" class="input input-bordered w-full @error('responsavel') input-error @enderror" />
+                            @error('responsavel')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+                        
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Documento do Responsável</span></label>
+                            <input type="text" name="doc_resp" placeholder="RG ou CPF" value="{{old('doc_resp')}}" class="input input-bordered w-full @error('doc_resp') input-error @enderror" />
+                             @error('doc_resp')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
 
-            @error('valor_mensal')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="data_recebimento">Recebimento: </label>
-            <input type="date" name="data_recebimento" placeholder="R$ 000,00" value="{{old('data_recebimento')}}"/>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Telefone do Responsável</span></label>
+                            <input type="text" name="telefone_resp" placeholder="(00) 90000-0000" value="{{old('telefone_resp')}}" class="input input-bordered w-full @error('telefone_resp') input-error @enderror" />
+                            @error('telefone_resp')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
 
-            @error('data_recebimento')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <br>
-        <div>
-            <label for="obs">OBS:</label>
-            <input type="text" name="obs" placeholder="obs" value="{{old('obs')}}"/>
+                        {{-- SEÇÃO: INFORMAÇÕES FINANCEIRAS --}}
+                        <div class="divider col-span-full text-lg font-semibold">Informações Financeiras</div>
 
-            @error('obs')
-                <span>{{ $message }}</span>
-            @enderror
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Banco</span></label>
+                            <input type="text" name="banco" placeholder="Nome do banco" value="{{old('banco')}}" class="input input-bordered w-full @error('banco') input-error @enderror" />
+                            @error('banco')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Tipo de Benefício</span></label>
+                            <input type="text" name="tipo_beneficio" placeholder="Ex: Aposentadoria, Pensão" value="{{old('tipo_beneficio')}}" class="input input-bordered w-full @error('tipo_beneficio') input-error @enderror" />
+                            @error('tipo_beneficio')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+                        
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Valor Mensal</span></label>
+                            <input type="text" name="valor_mensal" placeholder="R$ 0,00" value="{{old('valor_mensal')}}" class="input input-bordered w-full @error('valor_mensal') input-error @enderror" />
+                             @error('valor_mensal')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Data de Recebimento</span></label>
+                            <input type="date" name="data_recebimento" value="{{old('data_recebimento')}}" class="input input-bordered w-full @error('data_recebimento') input-error @enderror" />
+                            @error('data_recebimento')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="form-control col-span-full">
+                            <label class="label"><span class="label-text">Observações</span></label>
+                            <textarea name="obs" placeholder="Alguma observação importante..." class="textarea textarea-bordered h-24 @error('obs') textarea-error @enderror">{{old('obs')}}</textarea>
+                            @error('obs')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+
+                    {{-- Ações do Formulário --}}
+                    <div class="card-actions mt-8 justify-end">
+                        <a href="{{ route('dashboard') }}" class="btn btn-ghost">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Cadastrar Paciente</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <br>
-        <button>Salvar</button>
-    </form>
-</div>
+    </div>
+</x-layout.app>

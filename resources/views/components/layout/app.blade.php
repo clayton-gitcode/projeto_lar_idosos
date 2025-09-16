@@ -15,11 +15,8 @@
      --}}
     @vite('resources/css/app.css')
 </head>
-<body class="">
-<h1 class="text-3xl underline text-red-600">
-    Hello world!
-  </h1>
-  <a href="{{ route('login') }}">Login</a>
+<body>
+   oi do componente
+   {{ $slot }}
 </body>
-
 </html>

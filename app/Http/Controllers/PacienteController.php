@@ -48,7 +48,7 @@ class PacienteController extends Controller
          *
          * @return \Illuminate\View\View Retorna a view com os pacientes listados.
          */
-        $pacientes = Paciente::orderBy('name','asc')->get();
+        $pacientes = Paciente::orderBy('name','asc')->simplePaginate(10);
         return view('pacientes.list', [
             'pacientes' => $pacientes
         ]);

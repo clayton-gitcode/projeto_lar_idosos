@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Validation\Rule;
 /**
  * @property-read UploadedFile $photo
  */
@@ -25,11 +26,21 @@ class UpdatePacienteRequest extends FormRequest
      */
     public function rules(): array
     {
+        // Captura o ID do paciente que está sendo atualizado a partir da rota
+        $pacienteId = $this->route('paciente')->id;
+        // dd($pacienteId);
         return [
             'name' => ['required', 'string', 'max:255'],
             'birth_date' => ['required', 'date'],
             'rg' => ['nullable', 'string', 'max:20'],
             'sexo'=>['required','in:M,F'],
+            // Forma correta de validar um campo único durante um update
+            'cpf' => [
+                'required',
+                'string',
+                'max:14',
+                Rule::unique('pacientes', 'cpf')->ignore($pacienteId),
+            ],
             'sus' => ['nullable', 'string', 'max:20'],
             'responsavel' => ['nullable', 'string', 'max:50'],
             'doc_resp' => ['nullable', 'string', 'max:20'],

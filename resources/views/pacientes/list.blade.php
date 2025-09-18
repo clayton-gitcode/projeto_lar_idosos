@@ -23,7 +23,7 @@
                 <thead class="bg-base-200 text-base-content">
                     <tr>
                         <th class="p-4">Nome</th>
-                        <th class="p-4">CPF</th>
+                        {{-- <th class="p-4">CPF</th> --}}
                         <th class="p-4">Responsável</th>
                         <th class="p-4">Telefone</th>
                         <th class="p-4 text-center">Ações</th>
@@ -33,7 +33,7 @@
                     @forelse ($pacientes as $paciente)
                         <tr class="hover">
                             <td class="p-4">{{ $paciente->name }}</td>
-                            <td class="p-4">{{ $paciente->cpf }}</td>
+                            {{-- <td class="p-4">{{ $paciente->cpf }}</td> --}}
                             <td class="p-4">{{ $paciente->responsavel }}</td>
                             <td class="p-4">{{ $paciente->telefone_resp }}</td>
                             <td class="p-4">

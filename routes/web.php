@@ -19,9 +19,9 @@ Route::get('/', function () {
  *
  * As rotas protegidas pelo middleware 'guest' só podem ser acessadas por usuários não autenticados.
  */
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 Route::middleware('guest')->group(function () {
 

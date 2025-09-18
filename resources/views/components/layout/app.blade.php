@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html data-theme="cupcake" lang="{{ config('app.locale') }}">
 
 <head>
     <meta charset="UTF-8">

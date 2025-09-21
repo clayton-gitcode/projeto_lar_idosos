@@ -13,21 +13,21 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', length: 50);
             $table->date('birth_date')->nullable();
             $table->integer('age')->nullable();
             $table->enum('sexo',['M','F']);
-            $table->string('rg')->nullable();
-            $table->string('cpf')->nullable();
-            $table->string('sus')->nullable();
-            $table->string('responsavel')->nullable();
-            $table->string('doc_resp')->nullable();
-            $table->string('telefone_resp')->nullable();
-            $table->string('banco')->nullable();
-            $table->string('tipo_beneficio')->nullable();
+            $table->string('rg', length:20)->nullable();
+            $table->string('cpf', length:11)->nullable();
+            $table->string('sus', length: 100)->nullable();
+            $table->string('responsavel', length: 100)->nullable();
+            $table->string('doc_resp', length: 20)->nullable();
+            $table->string('telefone_resp', length: 20)->nullable();
+            $table->string('banco', length: 20)->nullable();
+            $table->string('tipo_beneficio', length: 50)->nullable();
             $table->decimal('valor_mensal', 10, 2)->nullable();
             $table->date('data_recebimento')->nullable();
-            $table->string('obs')->nullable();
+            $table->string('obs', length: 150)->nullable();
             $table->timestamps();
         });
     }

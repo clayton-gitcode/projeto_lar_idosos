@@ -38,7 +38,7 @@ class UpdatePacienteRequest extends FormRequest
             'cpf' => [
                 'required',
                 'string',
-                'max:14',
+                'max:11',
                 Rule::unique('pacientes', 'cpf')->ignore($pacienteId),
             ],
             'sus' => ['nullable', 'string', 'max:20'],

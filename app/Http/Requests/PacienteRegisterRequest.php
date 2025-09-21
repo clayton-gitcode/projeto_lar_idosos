@@ -27,7 +27,7 @@ class PacienteRegisterRequest extends FormRequest
             'age'=>['required', 'numeric'],
             'rg' => ['nullable', 'string', 'max:20'],
             'sexo'=>['required','in:M,F'],
-            'cpf' => ['required', 'string', 'max:14', 'unique:pacientes'],
+            'cpf' => ['required', 'string', 'max:11', 'unique:pacientes'],
             'sus' => ['nullable', 'string', 'max:20'],
             'responsavel' => ['nullable', 'string', 'max:50'],
             'doc_resp' => ['nullable', 'string', 'max:20'],

@@ -40,7 +40,7 @@ class Paciente extends Model
     protected function birthDate(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => \Carbon\Carbon::parse($value)->format('d/m/Y'),
+            // get: fn ($value) => \Carbon\Carbon::parse($value)->format('d/m/Y'),
         );
     }
 }

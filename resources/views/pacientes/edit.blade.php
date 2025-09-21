@@ -7,9 +7,8 @@
                 <p class="mt-1 text-base-content/70">Alterando o registro de: <span class="font-semibold">{{ $paciente->name }}</span></p>
             </div>
             <a href="{{ route('pacientes.list') }}" class="btn btn-ghost">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                {{-- resources/views/components/icons/arrow-left.blade.php --}}
+                <x-icons.arrow-left/>
                 Voltar para a Lista
             </a>
         </div>

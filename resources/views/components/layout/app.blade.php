@@ -16,7 +16,6 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-   oi do componente
    {{ $slot }}
 </body>
 </html>

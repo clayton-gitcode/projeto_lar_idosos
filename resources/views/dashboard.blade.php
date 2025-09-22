@@ -1,7 +1,18 @@
 <x-layout.app>
     <div class="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+
+        {{-- Botão Sair --}}
+        <div class="mb-2 flex flex-col items-end justify-end gap-4 sm:flex-row sm:items-center">
+            <a href="{{ route('logout') }}" class="btn btn-default">
+                {{-- resources/views/components/icons/arrow-left.blade.php --}}
+                <x-icons.exit/>
+                SAIR
+            </a>
+        </div>
+
+
         {{-- Cabeçalho da Página --}}
-        <div class="mb-4">
+        <div class="mb-2">
             <h1 class="text-4xl font-bold text-base-content">Dashboard</h1>
             <p class="text-base-content/70">Selecione uma das opções abaixo para começar.</p>
         </div>

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\PacienteController;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -62,4 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/pacientes/{paciente}/edit', [PacienteController::class, 'update']);
 
     Route::delete('/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');
+
+
+    Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
 });

@@ -6,7 +6,7 @@
         <span class="label-text">{{ $title }}</span>
     </label>
     <input name="{{ $name }}"{{ $attributes }}
-        class="input input-bordered w-full @error('$email') input-error @enderror" />
+        class="input input-bordered w-full" />
     @error($name)
         <label class="label">
             <span class="label-text-alt text-error">{{ $message }}</span>

@@ -97,4 +97,22 @@ class PacienteController extends Controller
 
         return view('pacientes.imprimir', compact('paciente'));
     }
+
+    public function search_bar(Request $request){
+
+        // 1. Validar e pegar o termo da busca do input com name="search_bar"
+        $request->validate(['search_bar' => 'nullable|string|max:20']);
+
+        // Pega o valor enviado pelo input com name="search_bar"
+        $search_bar = $request->input('search_bar');
+        if(!$search_bar){
+            return to_route('dashboard')->with('message','Busque por um nome"');
+        }
+
+        // ... Lógica da sua busca ...
+        $pacientes = Paciente::query()->where('name','LIKE',"%".$search_bar."%")->get();
+
+        return view('pacientes.search',compact('search_bar','pacientes'));
+
+    }
 }

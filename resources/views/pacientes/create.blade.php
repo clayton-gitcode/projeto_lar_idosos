@@ -84,6 +84,12 @@
                             @error('sus')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
                         </div>
 
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Nº do paciente</span></label>
+                            <input type="text" name="numero_do_paciente" placeholder="ex: 22A" value="{{old('numero_do_paciente')}}" class="input input-bordered w-full @error('numero_do_paciente') input-error @enderror" />
+                            @error('numero_do_paciente')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+
                         {{-- SEÇÃO: DADOS DO RESPONSÁVEL --}}
                         <div class="divider col-span-full text-lg font-semibold">Dados do Responsável</div>
 
@@ -134,6 +140,7 @@
 
                         <div class="form-control col-span-full">
                             <label class="label"><span class="label-text">Observações</span></label>
+                            <br>
                             <textarea name="obs" placeholder="Alguma observação importante..." class="textarea textarea-bordered h-24 @error('obs') textarea-error @enderror">{{old('obs')}}</textarea>
                             @error('obs')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
                         </div>

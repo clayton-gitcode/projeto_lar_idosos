@@ -37,6 +37,7 @@ class PacienteRegisterRequest extends FormRequest
             'valor_mensal' => ['nullable', 'numeric', 'min:0'],
             'data_recebimento' => ['nullable', 'date'],
             'obs' => ['nullable', 'string','max:255'],
+            'numero_do_paciente'=>['nullable','string','max:5'],
         ];
     }
 }

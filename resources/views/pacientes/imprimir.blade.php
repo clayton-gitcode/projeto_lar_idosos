@@ -32,6 +32,7 @@
                 <div class="text-center sm:text-left">
                     <h1 class="text-3xl font-bold">{{ $paciente->name }}</h1>
                     <p class="text-base-content/70">CPF: {{ $paciente->cpf }}</p>
+                    <p class="text-base-content/70">Nº: {{ $paciente->numero_do_paciente }}</p>
                 </div>
             </div>
 

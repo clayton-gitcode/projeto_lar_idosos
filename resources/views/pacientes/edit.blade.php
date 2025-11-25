@@ -90,6 +90,12 @@
                             @error('sus')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
                         </div>
 
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Nº do Paciente</span></label>
+                            <input type="text" name="numero_do_paciente" placeholder="Nº do cartão do SUS" value="{{old('numero_do_paciente', $paciente->numero_do_paciente)}}" class="input input-bordered w-full @error('numero_do_paciente') input-error @enderror" />
+                            @error('numero_do_paciente')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+
                         {{-- SEÇÃO: DADOS DO RESPONSÁVEL --}}
                         <div class="divider col-span-full text-lg font-semibold">Dados do Responsável</div>
 

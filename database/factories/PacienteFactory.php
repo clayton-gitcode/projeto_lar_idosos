@@ -32,6 +32,7 @@ class PacienteFactory extends Factory
             'valor_mensal' => fake()->randomFloat(2, 50, 2000),
             'data_recebimento' => fake()->date(),
             'obs' => fake()->sentence(),
+            'numero_do_paciente' => fake()->randomFloat(2, 5, 20),
         ];
     }
 }

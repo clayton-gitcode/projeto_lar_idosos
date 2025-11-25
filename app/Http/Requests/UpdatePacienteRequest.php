@@ -51,6 +51,7 @@ class UpdatePacienteRequest extends FormRequest
             'data_recebimento' => ['nullable', 'date'],
             'obs' => ['nullable', 'string','max:255'],
             'photo'=>['nullable', 'image'],
+            'numero_do_paciente'=>['nullable','string','max:5'],
         ];
     }
 }

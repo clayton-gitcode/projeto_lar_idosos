@@ -49,8 +49,7 @@
                     }
                 @endphp
 
-                {{-- A formatação de data foi removida, conforme solicitado --}}
-                {{ display_field('Data de nascimento:', $paciente->birth_date) }}
+                {{ display_field('Data de nascimento:', \Carbon\Carbon::parse($paciente->birth_date)->format('d/m/Y')) }}
                 {{ display_field('Idade:', $paciente->age) }}
                 {{ display_field('Sexo:', $paciente->sexo == 'M' ? 'Masculino' : 'Feminino') }}
                 {{ display_field('RG:', $paciente->rg) }}
@@ -67,8 +66,7 @@
                 {{ display_field('Banco:', $paciente->banco) }}
                 {{ display_field('Tipo de benefício:', $paciente->tipo_beneficio) }}
                 {{ display_field('Valor mensal:', $paciente->valor_mensal) }}
-                {{-- A formatação de data foi removida, conforme solicitado --}}
-                {{ display_field('Data de recebimento:', $paciente->data_recebimento) }}
+                {{ display_field('Data de recebimento:', \Carbon\Carbon::parse($paciente->data_recebimento)->format('d/m/Y') ) }}
 
                 <div class="col-span-full">
                      {{ display_field('Observações:', $paciente->obs) }}

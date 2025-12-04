@@ -38,6 +38,9 @@ class PacienteRegisterRequest extends FormRequest
             'data_recebimento' => ['nullable', 'date'],
             'obs' => ['nullable', 'string','max:255'],
             'numero_do_paciente'=>['nullable','string','max:5'],
+            'entrada_no_lar'=>['nullable','date'],
+            'saida_do_lar'=>['nullable','date'],
+            'motivo_da_saida'=>['nullable','string','max:255'],
         ];
     }
 }

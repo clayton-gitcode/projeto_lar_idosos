@@ -28,7 +28,10 @@ class Paciente extends Model
         'data_recebimento',
         'obs',
         'photo',
-        'numero_do_paciente'
+        'numero_do_paciente',
+        'entrada_no_lar',
+        'saida_do_lar',
+        'motivo_da_saida',
     ];
 
     /**

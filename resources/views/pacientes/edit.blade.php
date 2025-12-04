@@ -96,6 +96,26 @@
                             @error('numero_do_paciente')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
                         </div>
 
+                        {{-- SEÇÃO: Registro de Entrada e Saída --}}
+                        <div class="divider col-span-full text-lg font-semibold">Registro de Entrada e Saída</div>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Entrada no lar</span></label>
+                            <input type="date" name="entrada_no_lar" value="{{old('entrada_no_lar', $paciente->entrada_no_lar)}}" class="input input-bordered w-full @error('entrada_no_lar') input-error @enderror" />
+                            @error('entrada_no_lar')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Saida do lar</span></label>
+                            <input type="date" name="saida_do_lar" value="{{old('saida_do_lar',$paciente->saida_do_lar)}}" class="input input-bordered w-full @error('saida_do_lar') input-error @enderror" />
+                            @error('saida_do_lar')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Motivo da saida</span></label>
+                            <input type="text" name="motivo_da_saida" value="{{old('motivo_da_saida',$paciente->motivo_da_saida)}}" class="input input-bordered w-full @error('motivo_da_saida') input-error @enderror" />
+                            @error('motivo_da_saida')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
+                        </div>
+
                         {{-- SEÇÃO: DADOS DO RESPONSÁVEL --}}
                         <div class="divider col-span-full text-lg font-semibold">Dados do Responsável</div>
 

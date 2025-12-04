@@ -5,12 +5,12 @@
         <div class="mb-6 flex items-center justify-between print:hidden">
             <a href="{{ route('pacientes.list') }}" class="btn btn-ghost">
                 {{-- resources/views/components/icons/arrow-left.blade.php --}}
-                <x-icons.arrow-left/>
+                <x-icons.arrow-left />
                 Voltar para a Lista
             </a>
             <button onclick="window.print()" class="btn btn-primary">
                 {{-- resources/views/components/icons/imprimir.blade.php --}}
-                <x-icons.imprimir/>
+                <x-icons.imprimir />
                 Imprimir Ficha
             </button>
         </div>
@@ -22,7 +22,7 @@
             <div class="flex flex-col items-center gap-6 sm:flex-row">
                 <div class="avatar">
                     <div class="w-28 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100">
-                         @if ($paciente->photo)
+                        @if ($paciente->photo)
                             <img src="/storage/{{ $paciente->photo }}" alt="Foto do Paciente">
                         @else
                             <img src="/storage/photos/avatar.png" alt="Avatar Padrão">
@@ -40,12 +40,19 @@
 
             {{-- Grid com os detalhes do paciente --}}
             <div class="grid grid-cols-1 gap-x-8 gap-y-4 text-base sm:grid-cols-2 lg:grid-cols-3">
-                
+
                 {{-- Helper function para evitar repetição --}}
                 @php
-                    function display_field($label, $value) {
-                        if (empty($value)) return;
-                        echo '<div class="flex flex-col"><span class="text-sm font-semibold text-base-content/60">' . $label . '</span><span>' . $value . '</span></div>';
+                    function display_field($label, $value)
+                    {
+                        if (empty($value)) {
+                            return;
+                        }
+                        echo '<div class="flex flex-col"><span class="text-sm font-semibold text-base-content/60">' .
+                            $label .
+                            '</span><span>' .
+                            $value .
+                            '</span></div>';
                     }
                 @endphp
 
@@ -54,7 +61,7 @@
                 {{ display_field('Sexo:', $paciente->sexo == 'M' ? 'Masculino' : 'Feminino') }}
                 {{ display_field('RG:', $paciente->rg) }}
                 {{ display_field('Cartão do SUS:', $paciente->sus) }}
-                
+
                 <div class="divider col-span-full my-2 sm:hidden"></div>
 
                 {{ display_field('Responsável:', $paciente->responsavel) }}
@@ -66,11 +73,24 @@
                 {{ display_field('Banco:', $paciente->banco) }}
                 {{ display_field('Tipo de benefício:', $paciente->tipo_beneficio) }}
                 {{ display_field('Valor mensal:', $paciente->valor_mensal) }}
-                {{ display_field('Data de recebimento:', \Carbon\Carbon::parse($paciente->data_recebimento)->format('d/m/Y') ) }}
+                @if ($paciente->data_recebimento != null)
+                    {{ display_field('Data de recebimento:', \Carbon\Carbon::parse($paciente->data_recebimento)->format('d/m/Y')) }}
+                @endif
 
                 <div class="col-span-full">
-                     {{ display_field('Observações:', $paciente->obs) }}
+                    {{ display_field('Observações:', $paciente->obs) }}
                 </div>
+
+                <div class="divider col-span-full my-2"></div>
+
+                @if ($paciente->entrada_no_lar != null)
+                    {{ display_field('Data de entrada:', \Carbon\Carbon::parse($paciente->entrada_no_lar)->format('d/m/Y')) }}
+                @endif
+                @if ($paciente->saida_do_lar != null)
+                    {{ display_field('Data de saida:', \Carbon\Carbon::parse($paciente->saida_do_lar)->format('d/m/Y')) }}
+                @endif
+                {{ display_field('Motivo da saida:', $paciente->motivo_da_saida) }}
+
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
         {{-- Cabeçalho --}}
         <div class="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <div>
-                <h1 class="text-3xl font-bold text-base-content">Editar Paciente</h1>
+                <h1 class="text-3xl font-bold text-base-content">Editar Morador</h1>
                 <p class="mt-1 text-base-content/70">Alterando o registro de: <span class="font-semibold">{{ $paciente->name }}</span></p>
             </div>
             <a href="{{ route('pacientes.list') }}" class="btn btn-ghost">

@@ -22,7 +22,7 @@
             <div class="card-body">
             <x-login.form :route="route('pacientes.search')">
                 <div class="input-group w-full max-w-sm flex flex-nowrap gap-1">
-                    <input type="text" placeholder="Pesquisar Paciente por nome ..." name="search_bar" class="input input-bordered input-primary"/>
+                    <input type="text" placeholder="Pesquisar morador por nome ..." name="search_bar" class="input input-bordered input-primary"/>
                     <button class="btn btn-primary" type="submit"><x-icons.search/></button>
                 </div>
             </x-login.form>
@@ -34,7 +34,7 @@
             {{-- Card: Cadastrar Pacientes --}}
             <li class="list-none">
                 <x-link.link_dashboard :route="route('pacientes.create')"
-                     :title="'Cadastrar Pacientes'"
+                     :title="'Cadastrar Morador'"
                      :description="'Adicionar um novo paciente ao sistema.'">
 
                      <x-slot name="icon">
@@ -46,7 +46,7 @@
             {{-- Card: Listar Pacientes --}}
             <li class="list-none">
                 <x-link.link_dashboard :route="route('pacientes.list')"
-                     :title="'Listar Pacientes'"
+                     :title="'Listar Moradores'"
                      :description="'Visualizar e gerenciar pacientes existentes.'">
 
                      <x-slot name="icon">

@@ -3,8 +3,8 @@
         {{-- Cabeçalho --}}
         <div class="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <div>
-                <h1 class="text-3xl font-bold text-base-content">Cadastrar Novo Paciente</h1>
-                <p class="mt-1 text-base-content/70">Preencha os campos abaixo para adicionar um paciente.</p>
+                <h1 class="text-3xl font-bold text-base-content">Cadastrar novo Morador</h1>
+                <p class="mt-1 text-base-content/70">Preencha os campos abaixo para adicionar um morador.</p>
             </div>
             <a href="{{ route('dashboard') }}" class="btn btn-ghost">
                 {{-- resources/views/components/icons/arrow-left.blade.php --}}
@@ -35,7 +35,7 @@
 
                         <div class="form-control lg:col-span-2">
                             <label class="label"><span class="label-text">Nome Completo</span></label>
-                            <input type="text" name="name" placeholder="Nome completo do paciente" value="{{old('name')}}" class="input input-bordered w-full @error('name') input-error @enderror" />
+                            <input type="text" name="name" placeholder="Nome completo do morador" value="{{old('name')}}" class="input input-bordered w-full @error('name') input-error @enderror" />
                             @error('name')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
                         </div>
 
@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="form-control">
-                            <label class="label"><span class="label-text">Nº do paciente</span></label>
+                            <label class="label"><span class="label-text">Nº do morador</span></label>
                             <input type="text" name="numero_do_paciente" placeholder="ex: 22A" value="{{old('numero_do_paciente')}}" class="input input-bordered w-full @error('numero_do_paciente') input-error @enderror" />
                             @error('numero_do_paciente')<span class="mt-1 text-xs text-error">{{ $message }}</span>@enderror
                         </div>

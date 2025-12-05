@@ -75,7 +75,7 @@
                         {{-- Mensagem para quando não houver pacientes --}}
                         <tr>
                             <td colspan="6" class="p-4 text-center text-base-content/70">
-                                Nenhum paciente encontrado com o termo <strong>{{ $search_bar }}</strong>.
+                                Nenhum morador encontrado com o nome: <strong>{{ $search_bar }}</strong>.
                             </td>
                         </tr>
                     @endforelse
